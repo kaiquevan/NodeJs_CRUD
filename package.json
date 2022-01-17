@@ -4,8 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    
-    "build": "npm run tsc",
+    "build": "tsc",
     "dev": "node build/server.js"
   },
   "dependencies": {
