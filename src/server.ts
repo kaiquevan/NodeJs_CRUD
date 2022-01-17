@@ -37,4 +37,4 @@ app.use((err, request, response,next)=>{
 })
 
 // adicionar uma porta
-app.listen(5000, () => console.log("Servidor no ar. http://localhost:5000"));
+app.listen(process.env.PORT || 5000, () => console.log("Servidor no ar. http://localhost:5000"));
