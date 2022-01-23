@@ -10,7 +10,7 @@ class ProdutosRepository implements IProdutoRepository{
     
     
 
-    async salvar({nome, descricao,  preco}: ISalvarProdutoDTO): Promise<ProdutoDocument> {
+    async salvar({nome, descricao,  preco}: ISalvarProdutoDTO): Promise<ProdutoAttributes> {
 
         const produto: ProdutoAttributes = {
             create_at: new Date(),
@@ -22,11 +22,11 @@ class ProdutosRepository implements IProdutoRepository{
        return await Produto.create(produto);
     }
 
-    async obterTodos(): Promise<ProdutoDocument[]> {
+    async obterTodos(): Promise<ProdutoAttributes[]> {
         return await Produto.find({});
     }
 
-    async obterPorId(id:string): Promise<ProdutoDocument> {
+    async obterPorId(id:string): Promise<ProdutoAttributes> {
         return await Produto.findById(id);
     }
 
@@ -34,7 +34,7 @@ class ProdutosRepository implements IProdutoRepository{
         const produto =await Produto.findOne({nome: nome});
         return produto != null;
     }
-    async deletar(id: string): Promise<ProdutoDocument> {
+    async deletar(id: string): Promise<ProdutoAttributes> {
         return await Produto.findByIdAndDelete(id);
     }
     async alterar(id: string, nome: string, descricao: string, preco: number) {

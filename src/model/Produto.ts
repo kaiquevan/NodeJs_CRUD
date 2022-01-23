@@ -1,10 +1,10 @@
 import mongoose, { Document, Model, Schema} from 'mongoose';
 
-export type ProdutoAttributes = {
+export class ProdutoAttributes  {
+    id?: string;
     preco:number;
     nome: string;
     descricao:string;
-
     create_at: Date;
     update_at?: Date;
 }

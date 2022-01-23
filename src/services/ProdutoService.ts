@@ -1,4 +1,4 @@
-import { ProdutoDocument } from "../model/Produto";
+import { ProdutoAttributes } from "../model/Produto";
 import { IProdutoRepository } from "../repositories/IProdutoRepository";
 import { AppError } from '../erros/AppError';
 
@@ -15,7 +15,7 @@ class ProdutoService{
 
     constructor(private produtosRepository: IProdutoRepository ){ }
 
-        async salvar({nome, descricao, preco}: IRequest):Promise<ProdutoDocument> {
+        async salvar({nome, descricao, preco}: IRequest):Promise<ProdutoAttributes> {
 
             const produtoExiste = await this.produtosRepository.obterPorNome(nome);
 
@@ -27,11 +27,11 @@ class ProdutoService{
         }
 
 
-        async alterar({id, nome,descricao,preco}: IRequest): Promise<ProdutoDocument>{
+        async alterar({id, nome,descricao,preco}: IRequest): Promise<ProdutoAttributes>{
             return await this.produtosRepository.alterar(id,nome,descricao,preco);
         }
 
-        async deletar( id: string):Promise<ProdutoDocument>{
+        async deletar( id: string):Promise<ProdutoAttributes>{
             const produtoDeletado = await this.produtosRepository.deletar(id);
             if(!produtoDeletado){
                 throw new AppError("Produto não encontrado!")
@@ -39,11 +39,11 @@ class ProdutoService{
             return produtoDeletado ;
         }
 
-        async obterTodos(): Promise<ProdutoDocument[]>{
+        async obterTodos(): Promise<ProdutoAttributes[]>{
             return await this.produtosRepository.obterTodos();   
         }
 
-        async obterPorId(id:string): Promise<ProdutoDocument>{
+        async obterPorId(id:string): Promise<ProdutoAttributes>{
             return await this.produtosRepository.obterPorId(id);
             
         }
@@ -53,4 +53,4 @@ class ProdutoService{
 }
 
 
-export {ProdutoService}
+export {ProdutoService};
