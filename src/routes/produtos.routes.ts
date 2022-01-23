@@ -20,8 +20,8 @@ produtosRoutes.delete("/produtos", produtosController.deletar);
 produtosRoutes.get("/produtos", produtosController.obterTodos);
 
 //Obter produto por ID
-
+ 
 produtosRoutes.get("/produtoporid", produtosController.obterPorId);
 
-
+//teste
 export{produtosRoutes};
